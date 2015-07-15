@@ -1,0 +1,15 @@
+{
+    "name": "n1n7axiii/gallery",
+    "description": "Laravel package for gallery with categories.",
+    "license": "MIT",
+    "require": {
+        "intervention/image": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "Phusit Junthachuto",
+            "email": "ninja_xiii@hotmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
