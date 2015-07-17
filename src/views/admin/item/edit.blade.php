@@ -33,14 +33,16 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="col-md-4">&nbsp;</div>
-                    <div class="col-md-6">
-                        <label>
-                            {!! Form::checkbox('highlight', '1', false, ['style' => 'vertical-align:bottom;']) !!} Highlight
-                        </label>
+                @if (config('gallery.item_highlight'))
+                    <div class="form-group">
+                        <div class="col-md-4">&nbsp;</div>
+                        <div class="col-md-6">
+                            <label>
+                                {!! Form::checkbox('highlight', '1', false, ['style' => 'vertical-align:bottom;']) !!} Highlight
+                            </label>
+                        </div>
                     </div>
-                </div>
+                @endif
 
                 <div class="form-group">
                     <label class="col-md-4 control-label">Description</label>

@@ -14,7 +14,7 @@
                         <th width="30%">Image</th>
                         <th>Title</th>
                         <th>Description</th>
-                        <th class="text-center">Highlight</th>
+                        @if (config('gallery.item_highlight'))<th class="text-center">Highlight</th>@endif
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
@@ -24,7 +24,7 @@
                             <td><img src="{{ $category->imageUrl().'/'.$item->thumbnail() }}" alt=""></td>
                             <td>{{ $item->title }}</td>
                             <td>{{ str_limit($item->description) }}</td>
-                            <td class="text-center">@if($item->highlight)<p class="text-success">yes</p>@endif</td>
+                            @if (config('gallery.item_highlight'))<td class="text-center">@if($item->highlight)<p class="text-success">yes</p>@endif</td>@endif
                             <td class="text-right">
                                 <a href="{{ route('admin.gallery.item.edit', [$category->id, $item->id]) }}"><i class="fa fa-pencil-square"></i></a>
                                 <a href="{{ route('admin.gallery.item.destroy', [$category->id, $item->id]) }}" class="btn-destroy" data-confirm="Are you want to delete the item?" data-token="{{ csrf_token() }}"><i class="fa fa-times"></i></a>
