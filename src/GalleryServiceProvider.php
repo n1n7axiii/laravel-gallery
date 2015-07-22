@@ -20,13 +20,6 @@ class GalleryServiceProvider extends ServiceProvider {
             __DIR__.'/views' => base_path('resources/views/vendor/gallery'),
             __DIR__.'/database/migrations' => database_path('/migrations'),
         ]);
-
-        if (glob(__DIR__.'/model/publish/*.php')) {
-            $this->publishes([
-                __DIR__.'/model/publish' => app_path('/'),
-            ]);
-            \File::deleteDirectory(__DIR__.'/model/publish/', true);
-        }
 	}
 
 	/**

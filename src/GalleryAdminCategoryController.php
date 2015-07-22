@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use N1n7aXIII\Gallery\Model\GalleryCategory;
+use N1n7aXIII\Gallery\Models\GalleryCategory;
 use N1n7aXIII\Gallery\Requests\GalleryCategoryRequest;
 
 use Illuminate\Http\Request;
@@ -46,37 +46,34 @@ class GalleryAdminCategoryController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  GalleryCategory $category
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(GalleryCategory $category)
 	{
-        $category = GalleryCategory::find($id);
         return view('gallery::admin.category.show', compact('category'));
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  GalleryCategory $category
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(GalleryCategory $category)
 	{
-        $category = GalleryCategory::find($id);
         return view('gallery::admin.category.edit', compact('category'));
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
-     * @param GalleryCategoryRequest $request
+	 * @param  GalleryCategory $category
+     * @param  GalleryCategoryRequest $request
 	 * @return Response
 	 */
-	public function update($id, GalleryCategoryRequest $request)
+	public function update(GalleryCategory $category, GalleryCategoryRequest $request)
 	{
-        $category = GalleryCategory::find($id);
         $this->storeOrUpdateCategory($category, $request);
         return redirect()->route('admin.gallery.index');
 	}
@@ -84,12 +81,11 @@ class GalleryAdminCategoryController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  GalleryCategory $category
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(GalleryCategory $category)
 	{
-        $category = GalleryCategory::find($id);
         \File::deleteDirectory(config('gallery.gallery_path').'/'.$category->id.'/');
         $category->delete();
         if (\Request::ajax())

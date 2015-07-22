@@ -15,7 +15,7 @@
                 </div>
             @endif
 
-            {!! Form::model($category, ['class' => 'form-horizontal', 'files' => 'true', 'method' => 'PATCH', 'url' => route('admin.gallery.category.update', $category->id)]) !!}
+            {!! Form::model($category, ['class' => 'form-horizontal', 'files' => 'true', 'method' => 'PUT', 'url' => route('admin.gallery.category.update', $category->id)]) !!}
                 @if (config('gallery.category_thumb'))
                     <div class="form-group">
                         <label class="col-md-4 control-label">Thumbnail</label>

@@ -31,8 +31,8 @@ class GalleryCategoryRequest extends Request {
 
         // For other (PUT, PATCH) methods.
         return [
-            'name' => 'required|unique:gallery_categories,name,'.$this->route()->getParameter('gallery'),
-            'alias' => 'unique:gallery_categories,name,'.$this->route()->getParameter('gallery'),
+            'name' => 'required|unique:gallery_categories,name,'.$this->route()->getParameter('n1n7a_gallery_category'),
+            'alias' => 'unique:gallery_categories,name,'.$this->route()->getParameter('n1n7a_gallery_category'),
             'thumbnail' => 'image|max:10000',
         ];
     }

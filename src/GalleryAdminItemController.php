@@ -2,8 +2,8 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use N1n7aXIII\Gallery\Model\GalleryItem;
-use N1n7aXIII\Gallery\Model\GalleryCategory;
+use N1n7aXIII\Gallery\Models\GalleryItem;
+use N1n7aXIII\Gallery\Models\GalleryCategory;
 use N1n7aXIII\Gallery\Requests\GalleryItemRequest;
 
 use Illuminate\Http\Request;
@@ -106,7 +106,7 @@ class GalleryAdminItemController extends Controller {
         {
             if ($item->image)
                 $this->deleteOldImageSet($img_dir, $item);
-            $img_name = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+            $img_name = pathinfo(str_replace(' ', '-', $image->getClientOriginalName()), PATHINFO_FILENAME);
             $img_thumb = \Image::make($image)->fit(config('gallery.item_thumb_width'), config('gallery.item_thumb_height'));
             $img = \Image::make($image)->fit(config('gallery.item_max_width'), config('gallery.item_max_height'), function($constraint) {
                 $constraint->upsize();

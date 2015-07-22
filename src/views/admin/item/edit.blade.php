@@ -15,7 +15,7 @@
                 </div>
             @endif
 
-            {!! Form::model($item, ['class' => 'form-horizontal', 'files' => 'true', 'method' => 'PATCH', 'url' => route('admin.gallery.item.update', [$category->id, $item->id])]) !!}
+            {!! Form::model($item, ['class' => 'form-horizontal', 'files' => 'true', 'method' => 'PUT', 'url' => route('admin.gallery.item.update', [$category->id, $item->id])]) !!}
                 <div class="form-group">
                     <label class="col-md-4 control-label">Title</label>
                     <div class="col-md-6">
