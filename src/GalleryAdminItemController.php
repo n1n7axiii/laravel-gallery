@@ -104,9 +104,14 @@ class GalleryAdminItemController extends Controller {
         $image = $request->file('image');
         if ($image && $image->isValid())
         {
-            if ($item->image)
+			if (!isset($item->id))
+			{
+				$item->image = '';
+				$item->save();
+			}
+			if ($item->image && $item->image != '')
                 $this->deleteOldImageSet($img_dir, $item);
-            $img_name = pathinfo(str_replace(' ', '-', $image->getClientOriginalName()), PATHINFO_FILENAME);
+			$img_name = pathinfo(str_replace(' ', '-', $item->id.'-'.$image->getClientOriginalName()), PATHINFO_FILENAME);
             $img_thumb = \Image::make($image)->fit(config('gallery.item_thumb_width'), config('gallery.item_thumb_height'));
             $img = \Image::make($image)->fit(config('gallery.item_max_width'), config('gallery.item_max_height'), function($constraint) {
                 $constraint->upsize();
